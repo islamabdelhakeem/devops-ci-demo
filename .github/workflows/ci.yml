@@ -34,7 +34,7 @@ jobs:
       - run: npm ci
       - name: Run tests
         env:
-          DEMO_API_KEY: ${{ secrets.DEMO_API }}
+          DEMO_API_KEY: ${{ secrets.DEMO_API_KEY }}
         run: npm run test:ci
       - name: Upload coverage
         uses: actions/upload-artifact@v4
