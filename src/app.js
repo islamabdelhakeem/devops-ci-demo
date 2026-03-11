@@ -2,7 +2,6 @@ const express = require("express");
 
 function createApp() {
   const app = express();
-  let x = 5;
   app.use(express.json());
 
   app.get("/health", (_req, res) => {
