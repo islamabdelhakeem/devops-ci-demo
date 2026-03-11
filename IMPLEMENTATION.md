@@ -52,7 +52,6 @@ Go to: `Settings → Code security and analysis → Enable CodeQL`
 (Public repos have this enabled by default)
 
 ### Running the Pipeline
-
 **Automatic triggers:**
 - Push to `main` branch
 - Pull requests to `main` branch
