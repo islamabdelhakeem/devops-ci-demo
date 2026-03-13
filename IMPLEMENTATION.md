@@ -7,12 +7,12 @@ The original workflow only ran basic tests. I enhanced it to be production-ready
 | Component     | Changes                                    
 |---------------|---------------------------------------------
 | **Jobs**      | 3 specialized jobs (lint, test, security)   
-| **Linting**   | ✅ ESLint with failure blocking              
-| **Testing**   | ✅ Tests with coverage reports               
-| **Artifacts** | ✅ Coverage uploaded for analysis            
-| **Security**  | ✅ CodeQL static analysis                   
-| **Secrets**   | ✅ Proper secret handling with `DEMO_API_KEY` 
-| **Caching**   | ✅ npm dependency caching                 
+| **Linting**   | ESLint with failure blocking              
+| **Testing**   | Tests with coverage reports               
+| **Artifacts** | Coverage uploaded for analysis            
+| **Security**  | CodeQL static analysis                   
+| **Secrets**   | Proper secret handling with `DEMO_API_KEY` 
+| **Caching**   | npm dependency caching                 
 
 ---
 
@@ -22,7 +22,7 @@ The original workflow only ran basic tests. I enhanced it to be production-ready
 Linting is the cheapest validation - runs first to give immediate feedback on code quality issues.
 
 **2. Job Dependencies**  
-If linting fails, no point running expensive tests or security scans. Saves CI resources.
+If linting fails, no point running tests or security scans. Saves CI resources.
 
 **3. Parallel Test & Security**  
 Tests and CodeQL run in parallel (both need lint to pass first), reducing total pipeline time.
@@ -49,17 +49,12 @@ Go to: `Settings → Secrets and variables → Actions → New repository secret
 
 **2. Enable CodeQL (Private Repos Only)**  
 Go to: `Settings → Code security and analysis → Enable CodeQL`  
-(Public repos have this enabled by default)
+(Public repos enabled by default)
 
 ### Running the Pipeline
-**Automatic triggers:**
 - Push to `main` branch
 - Pull requests to `main` branch
 
-**Manual trigger:**
-1. Go to `Actions` tab
-2. Select `CI` workflow
-3. Click `Run workflow`
 
 ### Viewing Results
 
@@ -67,30 +62,6 @@ Go to: `Settings → Code security and analysis → Enable CodeQL`
 **CodeQL results:**
 Go to: `Security → Code scanning alerts`
 
----
-
-## Testing Locally
-
-```bash
-# Install dependencies
-npm ci
-
-# Run linting
-npm run lint
-
-# Run tests with coverage
-export DEMO_API_KEY="test-secret-value"
-npm run test:ci
-```
-
-**Expected output:**
-```
-✓ ESLint: no errors
-✓ Tests: 3 passed
-✓ Coverage: 100% (statements, branches, functions, lines)
-```
-
----
 
 ## Pipeline Jobs
 
